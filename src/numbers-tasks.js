@@ -7,8 +7,8 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-const { match } = require("assert");
-const { number } = require("yup");
+// const { match } = require('assert');
+const { number } = require('yup');
 
 /**
  * Returns an area of a rectangle given by width and height.
@@ -22,17 +22,17 @@ const { number } = require("yup");
  *   5, 5  => 25
  */
 
-function getRectangleArea(width, height) {
-  if (typeof width === 'number' && typeof height === 'number') {
-    return width * height;
+function getRectangleArea(a, b) {
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a * b;
   }
-  else{
-    console.log('write down the number');
-  }
+  console.error('write down the number');
+  return NaN;
 }
-
 getRectangleArea(5, 10);
 getRectangleArea(5, 5);
+
+
 /**
  * Returns a circumference of circle given by radius.
  *
@@ -46,11 +46,10 @@ getRectangleArea(5, 5);
  */
 function getCircleCircumference(radius) {
   if (typeof radius === 'number') {
-    return 2*Math.PI*radius;
+    return 2 * Math.PI * radius;
   }
-  else{
-    console.log('write down the number');
-  }
+  console.error('write down the number');
+  return NaN;
 }
 
 getCircleCircumference(5);
@@ -70,11 +69,11 @@ getCircleCircumference(0);
  */
 function getAverage(value1, value2) {
   if (typeof value1 === 'number' && typeof value2 === 'number') {
-    return (value1+value2)/2;
+    return (value1 + value2) / 2;
   }
-  else{
-    console.log('write down the number');
-  }
+
+  console.error('write down the number');
+  return NaN;
 }
 
 getAverage(5, 5);
@@ -97,11 +96,11 @@ getAverage(-3, 3);
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-console.log(getDistanceBetweenPoints(0, 0, 0, 1)); 
-console.log(getDistanceBetweenPoints(0, 0, 1, 0)); 
+console.log(getDistanceBetweenPoints(0, 0, 0, 1));
+console.log(getDistanceBetweenPoints(0, 0, 1, 0));
 console.log(getDistanceBetweenPoints(-5, 0, 10, -10));
 
 /**
@@ -116,17 +115,16 @@ console.log(getDistanceBetweenPoints(-5, 0, 10, -10));
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot( a, b ) {
+function getLinearEquationRoot(a, b) {
   if (typeof a === 'number' && typeof b === 'number') {
     return -b / a;
   }
-  else {
-    console.log('write down the number');
-  }
+  console.error('write down the number');
+  return NaN;
 }
-console.log(getLinearEquationRoot(5, -10)); 
-console.log(getLinearEquationRoot(1, 8));   
-console.log(getLinearEquationRoot(5, 0));
+getLinearEquationRoot(5, -10);
+getLinearEquationRoot(1, 8);
+getLinearEquationRoot(5, 0);
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -145,23 +143,27 @@ console.log(getLinearEquationRoot(5, 0));
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors( x1, y1, x2, y2 ) {
-  if (typeof x1 === 'number' && typeof y1 === 'number' && typeof x2 === 'number' && typeof y2 === 'number' ) {
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  if (
+    typeof x1 === 'number' &&
+    typeof y1 === 'number' &&
+    typeof x2 === 'number' &&
+    typeof y2 === 'number'
+  ) {
     const dotProduct = x1 * x2 + y1 * y2;
     const magnitude1 = Math.sqrt(x1 * x1 + y1 * y1);
     const magnitude2 = Math.sqrt(x2 * x2 + y2 * y2);
     const cosineTheta = dotProduct / (magnitude1 * magnitude2);
     return Math.acos(cosineTheta);
   }
-  else {
-    console.log('write down the number');
-  }
+  console.error('write down the number');
+  return NaN;
 }
 
-console.log(getAngleBetweenVectors(1, 0, 0, 1)); 
-console.log(getAngleBetweenVectors(0, 1, 0, -1)); 
-console.log(getAngleBetweenVectors(0, -1, 1, 0));
-console.log(getAngleBetweenVectors(0, 1, 0, 1));
+getAngleBetweenVectors(1, 0, 0, 1);
+getAngleBetweenVectors(0, 1, 0, -1);
+getAngleBetweenVectors(0, -1, 1, 0);
+getAngleBetweenVectors(0, 1, 0, 1);
 
 /**
  * Returns a last digit of a integer number.
@@ -176,18 +178,17 @@ console.log(getAngleBetweenVectors(0, 1, 0, 1));
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit( value ) {
+function getLastDigit(value) {
   if (typeof value === 'number' && value >= 0 && Number.isInteger(value)) {
     return value % 10;
-    } else {
-    throw new Error('Input must be a non-negative integer in decimal notation');
-    }
+  }
+  throw new Error('Input must be a non-negative integer in decimal notation');
 }
 
-console.log(getLastDigit(100)); 
-console.log(getLastDigit(37));  
-console.log(getLastDigit(5));   
-console.log(getLastDigit(0));   
+console.log(getLastDigit(100));
+console.log(getLastDigit(37));
+console.log(getLastDigit(5));
+console.log(getLastDigit(0));
 
 /**
  * Returns a number by given string representation.
@@ -200,12 +201,12 @@ console.log(getLastDigit(0));
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(value ) {
-  parseFloat(value)
+function parseNumberFromString(value) {
+  parseFloat(value);
 }
 
-console.log(parseNumberFromString('100'));    
-console.log(parseNumberFromString('37'));     
+console.log(parseNumberFromString('100'));
+console.log(parseNumberFromString('37'));
 console.log(parseNumberFromString('-525.5'));
 
 /**
@@ -221,16 +222,15 @@ console.log(parseNumberFromString('-525.5'));
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal( a, b, c ) {
+function getParallelepipedDiagonal(a, b, c) {
   if (typeof a === 'number' && typeof b === 'number' && typeof c === 'number') {
     return Math.sqrt(a * a + b * b + c * c);
-    } else {
-    throw new Error('Input must be a non-negative integer in decimal notation');
-    }
+  }
+  throw new Error('Input must be a non-negative integer in decimal notation');
 }
 
 console.log(getParallelepipedDiagonal(1, 1, 1));
-console.log(getParallelepipedDiagonal(3, 3, 3)); 
+console.log(getParallelepipedDiagonal(3, 3, 3));
 console.log(getParallelepipedDiagonal(1, 2, 3));
 
 /**
@@ -250,22 +250,21 @@ console.log(getParallelepipedDiagonal(1, 2, 3));
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen( num, pow ) {
+function roundToPowerOfTen(num, pow) {
   if (typeof num === 'number' && typeof pow === 'number') {
-    const factor = Math.pow(10, pow);
+    const factor = 10 ** pow;
     return Math.round(num / factor) * factor;
-  } else {
-    throw new Error('Input must be a non-negative integer in decimal notation');
   }
+  throw new Error('Input must be a non-negative integer in decimal notation');
 }
 
-console.log(roundToPowerOfTen(1234, 0)); 
-console.log(roundToPowerOfTen(1234, 1)); 
-console.log(roundToPowerOfTen(1234, 2)); 
-console.log(roundToPowerOfTen(1234, 3)); 
-console.log(roundToPowerOfTen(1678, 0)); 
-console.log(roundToPowerOfTen(1678, 1)); 
-console.log(roundToPowerOfTen(1678, 2)); 
+console.log(roundToPowerOfTen(1234, 0));
+console.log(roundToPowerOfTen(1234, 1));
+console.log(roundToPowerOfTen(1234, 2));
+console.log(roundToPowerOfTen(1234, 3));
+console.log(roundToPowerOfTen(1678, 0));
+console.log(roundToPowerOfTen(1678, 1));
+console.log(roundToPowerOfTen(1678, 2));
 console.log(roundToPowerOfTen(1678, 3));
 
 /**
@@ -285,11 +284,11 @@ console.log(roundToPowerOfTen(1678, 3));
  *   16 => false
  *   17 => true
  */
-function isPrime( n ) {
+function isPrime(n) {
   if (n <= 1) {
     return false;
   }
-  for (let i = 2; i <= Math.sqrt(n); i++) {
+  for (let i = 2; i <= Math.sqrt(n); i += 1) {
     if (n % i === 0) {
       return false;
     }
@@ -297,13 +296,13 @@ function isPrime( n ) {
   return true;
 }
 
-console.log(isPrime(4)); 
-console.log(isPrime(5)); 
-console.log(isPrime(6));  
-console.log(isPrime(7)); 
-console.log(isPrime(11)); 
+console.log(isPrime(4));
+console.log(isPrime(5));
+console.log(isPrime(6));
+console.log(isPrime(7));
+console.log(isPrime(11));
 console.log(isPrime(12));
-console.log(isPrime(16)); 
+console.log(isPrime(16));
 console.log(isPrime(17));
 
 /**
@@ -322,19 +321,18 @@ console.log(isPrime(17));
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  const num = Number(value);
-  if (!isNaN(num)) {
+  const num = parseFloat(value);
+  if (!Number.isNaN(num)) {
     return num;
-  } else {
-    return def;
   }
+  return def;
 }
 
-console.log(toNumber(null, 0)); 
-console.log(toNumber('test', 0)); 
+console.log(toNumber(null, 0));
+console.log(toNumber('test', 0));
 console.log(toNumber('1', 0));
-console.log(toNumber(42, 0)); 
-console.log(toNumber(new Number(42), 0));
+console.log(toNumber(42, 0));
+console.log(toNumber(42, 0));
 
 /**
  * Returns the cube of the given number.
@@ -347,11 +345,11 @@ console.log(toNumber(new Number(42), 0));
  *   -2 => -8
  *   0  => 0
  */
-function getCube( num ) {
-  return Math.pow(num,3)
+function getCube(num) {
+  return num ** 3;
 }
 
-console.log(getCube(3));  
+console.log(getCube(3));
 console.log(getCube(-2));
 console.log(getCube(0));
 
@@ -368,26 +366,28 @@ console.log(getCube(0));
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber( index ) {
+function getFibonacciNumber(index) {
   if (index < 0) {
     throw new Error('Index must be a non-negative integer');
   }
   if (index === 0) return 0;
   if (index === 1) return 1;
-    
-  let a = 0, b = 1, temp;
-  for (let i = 2; i <= index; i++) {
+
+  let a = 0;
+  let b = 1;
+  let temp;
+  for (let i = 2; i <= index; i += 1) {
     temp = a + b;
     a = b;
     b = temp;
   }
-    return b;
+  return b;
 }
 
-console.log(getFibonacciNumber(0));  
-console.log(getFibonacciNumber(1)); 
-console.log(getFibonacciNumber(2));  
-console.log(getFibonacciNumber(3));  
+console.log(getFibonacciNumber(0));
+console.log(getFibonacciNumber(1));
+console.log(getFibonacciNumber(2));
+console.log(getFibonacciNumber(3));
 console.log(getFibonacciNumber(10));
 
 /**
@@ -408,8 +408,8 @@ function getSumToN(n) {
   return (n * (n + 1)) / 2;
 }
 
-console.log(getSumToN(5)); 
-console.log(getSumToN(10)); 
+console.log(getSumToN(5));
+console.log(getSumToN(10));
 console.log(getSumToN(1));
 
 /**
@@ -426,12 +426,15 @@ console.log(getSumToN(1));
 function getSumOfDigits(num) {
   if (typeof num !== 'number' || num < 0 || !Number.isInteger(num)) {
     throw new Error('Input must be a non-negative integer');
-    }
-  return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0)
+  }
+  return num
+    .toString()
+    .split('')
+    .reduce((sum, digit) => sum + parseInt(digit, 10), 0);
 }
 
-console.log(getSumOfDigits(123)); 
-console.log(getSumOfDigits(202)); 
+console.log(getSumOfDigits(123));
+console.log(getSumOfDigits(202));
 console.log(getSumOfDigits(5));
 
 /**
@@ -445,16 +448,16 @@ console.log(getSumOfDigits(5));
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(num ) {
+function isPowerOfTwo(num) {
   if (typeof num !== 'number' || num <= 0 || !Number.isInteger(num)) {
     return false;
   }
-  return (num & (num - 1)) === 0;
+  return Math.log2(num) % 1 === 0;
 }
 
-console.log(isPowerOfTwo(4));  
+console.log(isPowerOfTwo(4));
 console.log(isPowerOfTwo(16));
-console.log(isPowerOfTwo(15)); 
+console.log(isPowerOfTwo(15));
 
 /**
  * Returns the sine of a number.
@@ -471,13 +474,13 @@ function getSine(num) {
 }
 
 console.log(getSine(0));
-console.log(getSine(Math.PI / 2)); 
+console.log(getSine(Math.PI / 2));
 console.log(getSine(Math.PI));
 
 /**
  * Returns a string representation of a number in a specified base (radix).
  *
- * @param {number} number
+ * @param {number} number1
  * @param {number} base
  * @return {string}
  *
@@ -485,31 +488,45 @@ console.log(getSine(Math.PI));
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(number, base) {
-  if (typeof number !== 'number' || typeof base !== 'number' || base < 2 || base > 36) {
-    throw new Error('Invalid input: number must be a number and base must be an integer between 2 and 36');
+function numberToStringInBase(number1, base) {
+  if (
+    typeof number1 !== 'number' ||
+    typeof base !== 'number' ||
+    base < 2 ||
+    base > 36
+  ) {
+    throw new Error(
+      'Invalid input: number must be a number and base must be an integer between 2 and 36'
+    );
   }
-  return number.toString(base);
+  return number1.toString(base);
 }
 
-console.log(numberToStringInBase(255, 16)); 
-console.log(numberToStringInBase(2, 2)); 
+console.log(numberToStringInBase(255, 16));
+console.log(numberToStringInBase(2, 2));
 
 /**
  * Returns a string representation of a number in exponential notation.
  *
- * @param {number} number
+ * @param {number} number1
  * @param {number} fractionDigits
  * @return {string}
  *
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential( number, fractionDigits) {
-  if (typeof number !== 'number' || typeof fractionDigits !== 'number' || fractionDigits < 0 || !Number.isInteger(fractionDigits)) {
-    throw new Error('Invalid input: number must be a number and fractionDigits must be a non-negative integer');
+function toExponential(number1, fractionDigits) {
+  if (
+    typeof number1 !== 'number' ||
+    typeof fractionDigits !== 'number' ||
+    fractionDigits < 0 ||
+    !Number.isInteger(fractionDigits)
+  ) {
+    throw new Error(
+      'Invalid input: number must be a number and fractionDigits must be a non-negative integer'
+    );
   }
-  return number.toExponential(fractionDigits);
+  return number1.toExponential(fractionDigits);
 }
 
 console.log(toExponential(12345, 2));
@@ -517,7 +534,7 @@ console.log(toExponential(12345, 2));
 /**
  * Returns a string representation of a number in fixed-point notation.
  *
- * @param {number} number
+ * @param {number} number1
  * @param {number} fractionDigits
  * @return {string}
  *
@@ -525,11 +542,11 @@ console.log(toExponential(12345, 2));
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(number, fractionDigits) {
-  if (typeof number !== 'number' || typeof fractionDigits !== 'number') {
+function toFixed(number1, fractionDigits) {
+  if (typeof number1 !== 'number' || typeof fractionDigits !== 'number') {
     throw new TypeError('Both arguments must be numbers');
   }
-  return number.toFixed(fractionDigits);
+  return number1.toFixed(fractionDigits);
 }
 
 console.log(toFixed(12345, 2));
@@ -538,7 +555,7 @@ console.log(toFixed(12.345, 1));
  * Returns a string representation of a number in normal (fixed-point or exponential)
  * notation rounded to precision significant digits.
  *
- * @param {number} number
+ * @param {number} number1
  * @param {number} precision
  * @return {string}
  *
@@ -546,11 +563,11 @@ console.log(toFixed(12.345, 1));
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(number, precision) {
-  if (typeof number !== 'number' || typeof precision !== 'number') {
+function toPrecision(number1, precision) {
+  if (typeof number1 !== 'number' || typeof precision !== 'number') {
     throw new TypeError('Both arguments must be numbers');
   }
-  return number.toPrecision(precision);
+  return number1.toPrecision(precision);
 }
 
 console.log(toPrecision(12345, 7));
@@ -559,19 +576,19 @@ console.log(toPrecision(12.345, 4));
 /**
  * Returns the primitive value of a Number object.
  *
- * @param {Number} number
+ * @param {Number} number2
  * @return {number}
  *
  * @example:
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(number) {
-  if (typeof number === 'number') {
-    return number;
+function getNumberValue(number2) {
+  if (typeof number2 === 'number') {
+    return number2;
   }
-  if (number instanceof Number) {
-    return number.valueOf();
+  if (number2 instanceof Number) {
+    return number2.valueOf();
   }
   throw new TypeError('Argument must be a Number object or a primitive number');
 }
@@ -594,8 +611,8 @@ console.log(getNumberValue(-5));
  * 5        => true
  * '5'      => false
  */
-function isNumber(number) {
-  if (Number.isInteger(number)) {
+function isNumber(number2) {
+  if (Number.isInteger(number2)) {
     return 'true';
   }
   return 'false';
@@ -639,7 +656,7 @@ console.log(isInteger('5'));
  */
 function getFloatOnString(str) {
   const parsed = parseFloat(str);
-  return isNaN(parsed) ? NaN : parsed;
+  return typeof parsed === 'number' && !Number.isNaN(parsed) ? parsed : NaN;
 }
 
 console.log(getFloatOnString('4.567abcdefgh'));
@@ -661,7 +678,7 @@ console.log(getFloatOnString('abcdefgh'));
  */
 function getIntegerOnString(str, base) {
   const parsed = parseInt(str, base);
-  return isNaN(parsed) ? NaN : parsed;
+  return typeof parsed === 'number' && !Number.isNaN(parsed) ? parsed : NaN;
 }
 
 console.log(getIntegerOnString('4.567abcdefgh', 10));
@@ -672,7 +689,7 @@ console.log(getIntegerOnString('10', 8));
 /**
  * Returns whether a number is a safe integer.
  *
- * @param {number} number
+ * @param {number} number3
  * @return {boolean}
  *
  * @example:
@@ -680,8 +697,8 @@ console.log(getIntegerOnString('10', 8));
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(number) {
-  return Number.isSafeInteger(number);
+function isSafeInteger(number3) {
+  return Number.isSafeInteger(number3);
 }
 
 console.log(isSafeInteger(10));
@@ -691,15 +708,15 @@ console.log(isSafeInteger(2 * 53));
 /**
  * Returns the smallest integer less than or equal to a given number.
  *
- * @param {number} number
+ * @param {number} number3
  * @return {number}
  *
  * @example:
  * 5.9  => 5
  * -5.1 => -6
  */
-function roundToSmallestInteger(number) {
-  return Math.floor(number);
+function roundToSmallestInteger(number3) {
+  return Math.floor(number3);
 }
 
 console.log(roundToSmallestInteger(5.9));
@@ -708,15 +725,15 @@ console.log(roundToSmallestInteger(-5.1));
 /**
  * Returns the largest integer greater than or equal to a given number.
  *
- * @param {number} number
+ * @param {number} number3
  * @return {number}
  *
  * @example:
  * 5.1  => 6
  * -5.9 => -5
  */
-function roundToLargestInteger(number) {
-  return Math.ceil(number);
+function roundToLargestInteger(number3) {
+  return Math.ceil(number3);
 }
 
 console.log(roundToLargestInteger(5.1));
@@ -725,7 +742,7 @@ console.log(roundToLargestInteger(-5.9));
 /**
  * Returns the value of a number rounded to the nearest integer.
  *
- * @param {number} number
+ * @param {number} number3
  * @return {number}
  *
  * @example:
@@ -733,8 +750,8 @@ console.log(roundToLargestInteger(-5.9));
  * 5.4  => 5
  * -5.5 => -5
  */
-function roundToNearestInteger(number) {
-  return Math.round(number);
+function roundToNearestInteger(number3) {
+  return Math.round(number3);
 }
 
 console.log(roundToNearestInteger(5.5));
@@ -744,7 +761,7 @@ console.log(roundToNearestInteger(-5.5));
 /**
  * Returns the integer part of a number by removing any fractional digits.
  *
- * @param {number} number
+ * @param {number} number4
  * @return {number}
  *
  * @example:
@@ -752,8 +769,8 @@ console.log(roundToNearestInteger(-5.5));
  * 5.4  => 5
  * -5.5 => -5
  */
-function getIntegerPartNumber(number) {
-  return Math.trunc(number);
+function getIntegerPartNumber(number4) {
+  return Math.trunc(number4);
 }
 
 console.log(getIntegerPartNumber(5.5));
@@ -792,7 +809,7 @@ console.log(getSumOfNumbers(0.1, 0.2, 0.3));
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
- return Math.max(firstNumber, secondNumber);
+  return Math.max(firstNumber, secondNumber);
 }
 
 console.log(getMaxNumber(1, 2));
@@ -833,7 +850,7 @@ console.log(getRandomInteger(-1, 1));
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  if  (typeof a !== 'number' || typeof b !== 'number') {
+  if (typeof a !== 'number' || typeof b !== 'number') {
     throw new TypeError('Both arguments must be numbers');
   }
   return Math.sqrt(a * a + b * b);
@@ -847,7 +864,7 @@ console.log(getHypotenuse(8, 15));
  * Returns count of odd numbers from zero to the resulting number.
  * The resulting number is taken into account.
  *
- * @param {number} number
+ * @param {number} number4
  * @return {number}
  *
  * @example:
@@ -856,14 +873,14 @@ console.log(getHypotenuse(8, 15));
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(number) {
-  if (typeof number !== 'number' || number < 0) {
+function getCountOfOddNumbers(number4) {
+  if (typeof number4 !== 'number' || number4 < 0) {
     throw new TypeError('Argument must be a non-negative number');
   }
-  return Math.floor((number + 1) / 2);
+  return Math.floor((number4 + 1) / 2);
 }
 
-console.log(getCountOfOddNumbers(4));
+getCountOfOddNumbers(4);
 console.log(getCountOfOddNumbers(5));
 console.log(getCountOfOddNumbers(10));
 console.log(getCountOfOddNumbers(15));
