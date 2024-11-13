@@ -31,8 +31,8 @@ function getRectangleArea(width, height) {
   }
 }
 
-console.log(getRectangleArea(5, 10));
-console.log(getRectangleArea(5, 5));
+getRectangleArea(5, 10);
+getRectangleArea(5, 5);
 /**
  * Returns a circumference of circle given by radius.
  *
@@ -53,9 +53,9 @@ function getCircleCircumference(radius) {
   }
 }
 
-console.log(getCircleCircumference(5));
-console.log(getCircleCircumference(3.14));
-console.log(getCircleCircumference(0));
+getCircleCircumference(5);
+getCircleCircumference(3.14);
+getCircleCircumference(0);
 /**
  * Returns an average of two given numbers.
  *
@@ -77,9 +77,9 @@ function getAverage(value1, value2) {
   }
 }
 
-console.log(getAverage(5, 5));
-console.log(getAverage(10, 0));
-console.log(getAverage(-3, 3));
+getAverage(5, 5);
+getAverage(10, 0);
+getAverage(-3, 3);
 
 /**
  * Returns a distance between two points by cartesian coordinates.
