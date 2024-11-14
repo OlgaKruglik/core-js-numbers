@@ -32,7 +32,6 @@ function getRectangleArea(a, b) {
 getRectangleArea(5, 10);
 getRectangleArea(5, 5);
 
-
 /**
  * Returns a circumference of circle given by radius.
  *
